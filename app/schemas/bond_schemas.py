@@ -36,5 +36,13 @@ class BondSchemaPlain(ma.Schema):
                 (sale_price is not None and sale_date is None)):
             raise ma.ValidationError("Both sale date and sale price must be either provided or not provided.")
 
+class BondSchemaPaginated(ma.Schema):
+    data = ma.fields.Nested(BondSchemaPlain, many=True)
+    meta = ma.fields.Dict()
 
-
+class BondPriceSchemaPlain(ma.Schema):
+    id = ma.fields.Str(dump_only=True)
+    bond_id = ma.fields.Integer(required=True, load_only=True)
+    bond = ma.fields.Nested(BondSchemaPlain(), only=["id"], dump_only=True)
+    price = ma.fields.Float(required=True)
+    date = ma.fields.Date(required=True)

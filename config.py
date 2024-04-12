@@ -5,7 +5,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config:
     PROPAGATE_EXCEPTIONS = True
-    API_TITLE = "Stores REST API"
+    API_TITLE = "Bond REST API"
     API_VERSION = "v1"
     OPENAPI_VERSION = "3.0.3"
     OPENAPI_URL_PREFIX = "/"

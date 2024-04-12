@@ -7,3 +7,8 @@ class IssuerSchemaPlain(ma.Schema):
     country = ma.fields.Str(required=True)
     credit_rating = ma.fields.Str(required=True)
     industry = ma.fields.Str(required=True)
+
+
+class IssuerSchemaPaginated(ma.Schema):
+    data = ma.fields.Nested(IssuerSchemaPlain, many=True)
+    meta = ma.fields.Dict()
